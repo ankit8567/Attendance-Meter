@@ -39,6 +39,7 @@ export interface UserSettings {
   defaultTarget: number;
   theme: 'dark' | 'light' | 'system';
   setupCompleted: boolean;
+  avatarUrl?: string;
 }
 
 export type AttendanceStatusCategory = 'safe' | 'warning' | 'critical';

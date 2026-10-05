@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useAttendance } from '../context/AttendanceContext';
-import { exportReportAsPDF, exportElementAsImage } from '../utils/reportExport';
+import { exportReportAsPDF, exportReportAsImage } from '../utils/reportExport';
 import {
   calculateAttendancePercentage,
   calculateBunksAvailable,
@@ -9,6 +9,7 @@ import {
   generateSmartInsights,
 } from '../utils/attendanceCalculations';
 import { X, FileDown, Image, Check, Loader2, FileText } from 'lucide-react';
+import { AnkitAvatar } from './AnkitAvatar';
 
 interface ExportReportModalProps {
   isOpen: boolean;
@@ -71,10 +72,19 @@ export const ExportReportModal: React.FC<ExportReportModalProps> = ({ isOpen, on
   };
 
   const handleExportImage = async (format: 'jpg' | 'jpeg') => {
-    if (!reportRef.current) return;
     try {
       setExportingType(format);
-      await exportElementAsImage(reportRef.current, format, studentName);
+      await exportReportAsImage(
+        {
+          settings,
+          subjects,
+          currentAttended,
+          currentTotal,
+          currentTarget,
+        },
+        format,
+        reportRef.current
+      );
       addToast('Report Exported', `Saved Attendance Report as ${format.toUpperCase()}.`, 'success');
     } catch (e) {
       console.error(e);
@@ -363,11 +373,12 @@ export const ExportReportModal: React.FC<ExportReportModalProps> = ({ isOpen, on
             </div>
 
             {/* Watermark in Report */}
-            <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
+            <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-2">
               <span>Attendance Meter · Comprehensive Student Attendance Calculator</span>
-              <span className="font-semibold text-slate-800">
-                Developed By Ankit Srivastava
-              </span>
+              <div className="inline-flex items-center gap-1.5 font-semibold text-slate-800">
+                <AnkitAvatar size={16} showRing={false} />
+                <span>Developed By Ankit Srivastava</span>
+              </div>
             </div>
           </div>
         </div>

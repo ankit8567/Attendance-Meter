@@ -7,6 +7,7 @@ export const STORAGE_KEYS = {
   CALENDAR: 'attendance_meter_calendar_v2',
   STANDALONE_ATTENDANCE: 'attendance_meter_standalone_v2',
   HOLIDAYS: HOLIDAYS_STORAGE_KEY,
+  AVATAR: 'attendance_meter_avatar_v1',
 };
 
 export const DEFAULT_SETTINGS: UserSettings = {
@@ -148,4 +149,25 @@ export function resetAllStorageData(): void {
   localStorage.removeItem(STORAGE_KEYS.CALENDAR);
   localStorage.removeItem(STORAGE_KEYS.STANDALONE_ATTENDANCE);
   localStorage.removeItem(STORAGE_KEYS.HOLIDAYS);
+  localStorage.removeItem(STORAGE_KEYS.AVATAR);
+}
+
+export function getStoredAvatar(): string | null {
+  try {
+    return localStorage.getItem(STORAGE_KEYS.AVATAR) || null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveStoredAvatar(avatarUrl: string | null): void {
+  try {
+    if (avatarUrl) {
+      localStorage.setItem(STORAGE_KEYS.AVATAR, avatarUrl);
+    } else {
+      localStorage.removeItem(STORAGE_KEYS.AVATAR);
+    }
+  } catch (e) {
+    console.error('Failed saving avatar to storage', e);
+  }
 }

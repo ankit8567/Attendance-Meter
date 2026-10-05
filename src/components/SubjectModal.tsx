@@ -9,6 +9,7 @@ import {
   getAttendanceStatus,
 } from '../utils/attendanceCalculations';
 import { X, Check, Flame, Target, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { AnkitAvatar } from './AnkitAvatar';
 
 interface SubjectModalProps {
   subject: Subject | null;
@@ -199,8 +200,9 @@ export const SubjectModal: React.FC<SubjectModalProps> = ({ subject, onClose, on
           )}
 
           <div className="pt-2 text-center">
-            <span className="text-[10px] text-slate-400 dark:text-slate-500">
-              Attendance Meter · Developed By Ankit Srivastava
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 inline-flex items-center gap-1.5 justify-center">
+              <AnkitAvatar size={14} showRing={false} />
+              <span>Attendance Meter · Developed By Ankit Srivastava</span>
             </span>
           </div>
         </div>

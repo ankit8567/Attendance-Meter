@@ -13,12 +13,14 @@ import {
   DEFAULT_SETTINGS,
   DEFAULT_STANDALONE,
   exportAllDataAsJSON,
+  getStoredAvatar,
   getStoredCalendar,
   getStoredSettings,
   getStoredStandalone,
   getStoredSubjects,
   importAllDataFromJSON,
   resetAllStorageData,
+  saveStoredAvatar,
   saveStoredCalendar,
   saveStoredSettings,
   saveStoredStandalone,
@@ -55,8 +57,10 @@ interface AttendanceContextType {
   currentPercentage: number;
   currentAbsent: number;
   effectiveTheme: 'dark' | 'light';
+  avatarUrl: string | null;
 
   // Actions
+  updateAvatar: (url: string | null) => void;
   addSubject: (subject: Omit<Subject, 'id'>) => void;
   updateSubject: (subject: Subject) => void;
   deleteSubject: (id: string) => void;

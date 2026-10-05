@@ -6,6 +6,7 @@ import {
   formatClassesToDays,
 } from '../utils/attendanceCalculations';
 import { Target, CheckCircle2, AlertCircle, TrendingUp } from 'lucide-react';
+import { AnkitAvatar } from './AnkitAvatar';
 
 export const TargetCalculator: React.FC = () => {
   const { currentAttended, currentTotal, currentTarget, settings } = useAttendance();
@@ -233,8 +234,9 @@ export const TargetCalculator: React.FC = () => {
         </div>
       </div>
       <div className="pt-1 text-center">
-        <span className="text-[10px] text-slate-400 dark:text-slate-500">
-          Developed By Ankit Srivastava
+        <span className="text-[10px] text-slate-400 dark:text-slate-500 inline-flex items-center gap-1.5 justify-center">
+          <AnkitAvatar size={14} showRing={false} />
+          <span>Developed By Ankit Srivastava</span>
         </span>
       </div>
     </div>

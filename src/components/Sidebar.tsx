@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAttendance, NavTab } from '../context/AttendanceContext';
 import { ThemeSelector } from './ThemeSelector';
+import { AnkitAvatar } from './AnkitAvatar';
 import {
   LayoutDashboard,
   BookOpen,
@@ -99,6 +100,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenAddModal }) => {
         </button>
 
         <ThemeSelector />
+
+        {/* Developer Attribution */}
+        <div className="pt-2 flex items-center justify-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 select-none">
+          <AnkitAvatar size={16} showRing={false} className="ring-1 ring-indigo-500/40" />
+          <span>Developed By <strong className="font-semibold text-slate-700 dark:text-slate-300">Ankit Srivastava</strong></span>
+        </div>
       </div>
     </aside>
   );
