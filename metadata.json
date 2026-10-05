@@ -1,0 +1,6 @@
+{
+  "name": "Attendance Meter",
+  "description": "Know your attendance. Plan your bunks. Stay on target. An intelligent attendance calculator, bunk simulator, and recovery planner for college students.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

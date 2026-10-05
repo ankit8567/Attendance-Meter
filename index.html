@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Meter</title>
+    <meta name="description" content="Know your attendance. Plan your bunks. Stay on target. An intelligent attendance calculator, bunk simulator, and recovery planner for college students." />
+    <meta property="og:title" content="Attendance Meter" />
+    <meta property="og:description" content="Know your attendance. Plan your bunks. Stay on target. An intelligent attendance calculator, bunk simulator, and recovery planner for college students." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        try {
+          var raw = localStorage.getItem('attendance_meter_settings_v2');
+          var theme = 'dark';
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (parsed && parsed.theme) theme = parsed.theme;
+          }
+          var isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200 min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
